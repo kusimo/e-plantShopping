@@ -231,9 +231,10 @@ body {
     background-color: #45a049;
   }
   
-  .product-button.added-to-cart {
+  .product-button.added-to-cart, button.product-button[disabled] {
     background-color: grey; /* Grey when product is added */
   }
+
   .product-desc {
     font-size: 12px;
     color: #787878;

@@ -25,7 +25,8 @@ function ProductList() {
            [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
          }));
       };
-      
+
+    
 
     const plantsArray = [
         {
@@ -262,11 +263,13 @@ const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
     setShowCart(false); // Hide the cart when navigating to About Us
+    setAddedToCart({});
 };
 
    const handleContinueShopping = (e) => {
     e.preventDefault();
     setShowCart(false);
+    setAddedToCart({});
   };
     return (
         <div>
@@ -301,7 +304,13 @@ const handlePlantsClick = (e) => {
                         <div className="product-desc">{plant.description}</div>
                         <div className="product-title">{plant.name}</div>
                         {/*Similarly like the above plant.name show other details like description and cost*/}
-                        <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                        <button
+                        className="product-button"
+                        onClick={() => handleAddToCart(plant)}
+                        disabled={addedToCart[plant.name]} // Disable if added
+                    >
+                        {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
+                    </button>
                     </div>
                     ))}
                 </div>
